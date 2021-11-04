@@ -1,12 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { New } from './screens';
-const Stack = createStackNavigator();
+import { New, Top, Hot, Controversial } from './screens';
+
 const Tab = createBottomTabNavigator();
 export default function App() {
   return (
@@ -14,24 +13,26 @@ export default function App() {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'New') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={
+                  focused
+                    ? 'ios-information-circle'
+                    : 'ios-information-circle-outline'
+                }
+                size={size}
+                color={color}
+              />
+            );
           },
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: 'orange',
           tabBarInactiveTintColor: 'gray',
         })}
       >
         <Tab.Screen name="New" component={New} />
+        <Tab.Screen name="Top" component={Top} />
+        <Tab.Screen name="Hot" component={Hot} />
+        <Tab.Screen name="Controversial" component={Controversial} />
       </Tab.Navigator>
     </NavigationContainer>
   );
