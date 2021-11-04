@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { ItemNotice } from '../../components';
 import RedditServices from '../../utils/services/RedditServices';
 import { PageScrollView } from 'pagescrollview';
