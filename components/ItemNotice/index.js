@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { View, Text, Image } from 'react-native';
 const ItemNotice = ({ data }) => {
   //console.log('data notie item', data)
@@ -6,6 +7,8 @@ const ItemNotice = ({ data }) => {
   const map = data.map((item) => newsNotice.push(item.data));
 
   return newsNotice.map((notice) => {
+    const date = new Date(notice?.created * 1000).toISOString();
+    const dateTimeAgo = moment(date).fromNow();
     return (
       <View
         key={notice.id}
@@ -14,7 +17,7 @@ const ItemNotice = ({ data }) => {
           width: '100%',
           marginBottom: 5,
           borderBottomWidth: 2,
-          borderColor: 'orange'
+          borderColor: 'orange',
         }}
       >
         <View
@@ -22,14 +25,14 @@ const ItemNotice = ({ data }) => {
             alignItems: 'flex-end',
           }}
         >
-          <Text>{notice?.created}</Text>
+          <Text>{dateTimeAgo}</Text>
         </View>
         <View>
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             <View
@@ -37,7 +40,7 @@ const ItemNotice = ({ data }) => {
                 width: '18%',
                 height: 60,
                 marginRight: 10,
-                backgroundColor: 'red'
+                backgroundColor: 'red',
               }}
             >
               <Image
@@ -66,7 +69,7 @@ const ItemNotice = ({ data }) => {
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'space-between',
-                  marginTop: 10
+                  marginTop: 10,
                 }}
               >
                 <Text>{notice?.author}</Text>
