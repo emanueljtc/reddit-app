@@ -5,7 +5,7 @@ import RedditServices from '../../utils/services/RedditServices';
 import { PageScrollView } from 'pagescrollview';
 import Message from '../../components/Message';
 
-const New = () => {
+const Hot = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showError, setShowError] = useState(false);
@@ -13,12 +13,11 @@ const New = () => {
   const callData = async () => {
     setLoading(true);
     try {
-      const response = await RedditServices.callInformation('new');
-      //console.log('response', response.data.children);
+      const response = await RedditServices.callInformation('hot');
       setData(response.data.children);
       setLoading(false);
     } catch (err) {
-      console.error('error callData New', err);
+      console.error('error callData Hot', err);
       setLoading(false);
       setShowError(true);
     }
@@ -54,4 +53,4 @@ const New = () => {
   );
 };
 
-export default New;
+export default Hot;
