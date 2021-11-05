@@ -6,5 +6,7 @@ import Top from './Top';
 import Hot from './Hot';
 //Controversial
 import Controversial from './Controversial';
+//MyBrowser
+import MyBrowser from './MyBrowser';
 
-export { New, Top, Hot, Controversial };
+export { New, Top, Hot, Controversial, MyBrowser };

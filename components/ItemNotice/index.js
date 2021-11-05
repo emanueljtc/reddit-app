@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import { View, Text, Image } from 'react-native';
-const ItemNotice = ({ data }) => {
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+const ItemNotice = ({ data, navigation, setUrl }) => {
+  // console.log(navigation);
   //console.log('data notie item', data)
   let newsNotice = [];
   const map = data.map((item) => newsNotice.push(item.data));
@@ -10,7 +11,8 @@ const ItemNotice = ({ data }) => {
     const date = new Date(notice?.created * 1000).toISOString();
     const dateTimeAgo = moment(date).fromNow();
     return (
-      <View
+      <TouchableOpacity
+        onPress={() => setUrl(notice?.url)}
         key={notice.id}
         style={{
           padding: 10,
@@ -79,7 +81,7 @@ const ItemNotice = ({ data }) => {
             </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   });
 };
